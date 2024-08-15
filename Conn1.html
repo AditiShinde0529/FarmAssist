@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FarmAssist</title>
+    <style>
+        /* Reset some default styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8f0;
+            color: #333;
+        }
+
+        /* Header and Navigation */
+        header {
+            background-color: rgb(15, 56, 46);
+            padding: 15px 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style-type: none;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #e6e6e6;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 18px;
+        }
+
+        /* Connections Section */
+        .connections {
+            padding: 40px 20px;
+        }
+
+        .connections h2 {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .choices {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 40px;
+        }
+
+        .choice-box {
+            background-color: #fff;
+            border-radius: 4px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            padding: 20px;
+        }
+
+        .choice-box:hover {
+            transform: translateY(-10px);
+        }
+
+        .choice-box img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 4px 4px 0 0;
+        }
+
+        .choice-box h3 {
+            padding: 20px 0;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        /* Modals */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        .close-button {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Market Place Sellers Section */
+        .market-place {
+            padding: 100px 20px 40px;
+        }
+
+        .market-place h2 {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .seller-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+
+        .seller-box {
+            background: #fff;
+            border: 1px solid #ddd;
+            padding: 1rem;
+            text-align: left;
+            cursor: pointer;
+            aspect-ratio: 16 / 9;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .seller-box img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .seller-box h3 {
+            font-size: 18px;
+            margin-top: 1rem;
+        }
+
+        .seller-box p {
+            margin-top: 0.5rem;
+        }
+
+        .seller-details {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .seller-box:hover .seller-details {
+            opacity: 1;
+        }
+
+        .seller-details h4 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .seller-details p {
+            margin-bottom: 10px;
+        }
+
+        .seller-details button {
+            margin: 5px;
+            padding: 8px 16px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        /* Footer */
+        footer {
+            background-color: rgb(15, 56, 46);
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 14px;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/2.2.3/css/datepicker.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">My Services</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Products</a></li>
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="#">Other</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Welcome to FarmAssist</h1>
+            <p>Simplifying your farming experience</p>
+        </section>
+
+        <section class="connections">
+            <h2>Connections</h2>
+            <div class="choices">
+                <div class="choice-box" onclick="showMarketPlaceSellers()">
+                    <img src="photo6.jpg" alt="Market Place Sellers Near You">
+                    <h3>Market Place Sellers Near You</h3>
+                </div>
+                <div class="choice-box" onclick="showRentalList('rawmaterial')">
+                    <img src="raw_material.jpg" alt="Raw Material Provider">
+                    <h3>Raw Material Provider</h3>
+                </div>
+                <div class="choice-box" onclick="showRentalList('restaurants')">
+                    <img src="restaurant.jpg" alt="Restaurants">
+                    <h3>Restaurants</h3>
+                </div>
+                <div class="choice-box" onclick="showRentalList('transportation')">
+                    <img src="tractor4.jpg" alt="Transportation">
+                    <h3>Transportation</h3>
+                </div>
+            </div>
+        </section>
+
+        <div id="rental-list-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <h2 id="modal-title"></h2>
+                <div id="rental-list"></div>
+            </div>
+        </div>
+
+        <div id="calendar-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <h2 id="calendar-title"></h2>
+                <div id="calendar"></div>
+                <button class="book-button">Book Now</button>
+                <button id="selectDateBtn">Select Date</button>
+                <input type="text" id="datepicker" readonly>
+            </div>
+        </div>
+
+        <section id="market-place" class="page" style="display: none;">
+            <h2>Market Place Sellers Near You</h2>
+            <div class="seller-grid">
+                <div class="seller-box" onclick="showSellerDetails(this)">
+                    <img src="seller1.jpg" alt="Seller 1">
+                    <h3>Seller 1</h3>
+                    <p>Location: City A</p>
+                    <p>Phone: 123-456-7890</p>
+                    <p>Email: seller1@example.com</p>
+                    <p><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15133.325639762044!2d73.80664320000001!3d18.51392!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bfce3146696b%3A0xb89abc985635ac99!2sSuryakant%20Kakade%20Farms!5e0!3m2!1sen!2sin!4v1723727590209!5m2!1sen!2sin" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></p>
+                    <div class="seller-details">
+                        <h4>Farm Fresh Delights</h4>
+                        <p>Location: City Andheri</p>
+                        <p>Phone: 123-456-7890</p>
+                        <p>Email: seller1@example.com</p>
+                        <button>Chat Now</button>
+                        <button>Connect</button>
+                    </div>
+                </div>
+                <div class="seller-box" onclick="showSellerDetails(this)">
+                    <img src="seller2.jpg" alt="Seller 2">
+                    <h3>Seller 2</h3>
+                    <p>Location: City B</p>
+                    <p>Phone: 987-654-3210</p>
+                    <p>Email: seller2@example.com</p>
+                    <p><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15133.325639762044!2d73.80664320000001!3d18.51392!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bfce3146696b%3A0xb89abc985635ac99!2sSuryakant%20Kakade%20Farms!5e0!3m2!1sen!2sin!4v1723727590209!5m2!1sen!2sin" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></p>
+                    <div class="seller-details">
+                        <h4>Mohanlal Market</h4>
+                        <p>Location: City Banglore</p>
+                        <p>Phone: 987-654-3210</p>
+                        <p>Email: seller2@example.com</p>
+                        <button>Chat Now</button>
+                        <button>Connect</button>
+                    </div>
+                </div>
+                <div class="seller-box" onclick="showSellerDetails(this)">
+                    <img src="seller3.jpg" alt="Seller ">
+                    <h3>Rajesh Fresh Supplies</h3>
+                    <p>Location: City Mumbai</p>
+                    <p>Phone: 987-654-3210</p>
+                    <p>Email: seller2@example.com</p>
+                    <p><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15133.325639762044!2d73.80664320000001!3d18.51392!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bfce3146696b%3A0xb89abc985635ac99!2sSuryakant%20Kakade%20Farms!5e0!3m2!1sen!2sin!4v1723727590209!5m2!1sen!2sin" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></p>
+                    <div class="seller-details">
+                        <h4>Seller 3</h4>
+                        <p>Location: City B</p>
+                        <p>Phone: 987-654-3210</p>
+                        <p>Email: seller2@example.com</p>
+                        <button>Chat Now</button>
+                        <button>Connect</button>
+                    </div>
+                </div>
+                <!-- Add more seller boxes here -->
+            </div>
+        </section>
+
+        <section id="machines" class="page" style="display: none;">
+            <h2 id="machineType">Available Machines</h2>
+            <div class="machine-grid" id="machineList">
+                <!-- Machine boxes will be dynamically added here -->
+            </div>
+        </section>
+
+        <section id="machineDetails" class="page" style="display: none;">
+            <h2 id="machineName"></h2>
+            <div class="machine-details" id="machineInfo">
+                <!-- Detailed machine information will be dynamically added here -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 FarmAssist. All rights reserved.</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script>
+        // Function to show the rental list modal
+        function showRentalList(type) {
+            // Update the modal title based on the clicked choice
+            document.getElementById("modal-title").textContent = `Available ${type} Services`;
+
+            // Dynamically add the available services to the rental list
+            const rentalList = document.getElementById("rental-list");
+            rentalList.innerHTML = "";
+
+            // Add the available services based on the clicked choice
+            if (type === "rawmaterial") {
+                rentalList.innerHTML = "<div>Seed Supplier</div><div>Fertilizer Supplier</div><div>Livestock Feed Supplier</div>";
+            } else if (type === "restaurants") {
+                rentalList.innerHTML = "<div>Farmland Rental</div><div>Greenhouse Rental</div><div>Orchard Rental</div>";
+            } else if (type === "transportation") {
+                rentalList.innerHTML = "<div>Truck Rental</div><div>Trailer Rental</div><div>Cargo Van Rental</div>";
+            }
+
+            // Show the rental list modal
+            document.getElementById("rental-list-modal").style.display = "block";
+        }
+
+        // Function to show the market place sellers page
+        function showMarketPlaceSellers() {
+            // Hide the main content and show the market place sellers section
+            document.querySelector(".connections").style.display = "none";
+            document.getElementById("market-place").style.display = "block";
+        }
+
+        // Function to show the seller details
+        function showSellerDetails(sellerBox) {
+            const sellerDetails = sellerBox.querySelector('.seller-details');
+            sellerDetails.style.opacity = '1';
+        }
+
+        // Add event listener to close the seller details when clicked outside
+        document.addEventListener('click', (event) => {
+            const sellerBoxes = document.querySelectorAll('.seller-box');
+            sellerBoxes.forEach((box) => {
+                const sellerDetails = box.querySelector('.seller-details');
+                if (sellerDetails && !box.contains(event.target)) {
+                    sellerDetails.style.opacity = '0';
+                }
+            });
+        });
+
+        // Function to close the rental list modal
+        document.getElementsByClassName("close-button")[0].onclick = function() {
+            document.getElementById("rental-list-modal").style.display = "none";
+        };
+
+        // Function to close the calendar modal
+        document.getElementsByClassName("close-button")[1].onclick = function() {
+            document.getElementById("calendar-modal").style.display = "none";
+        };
+    </script>
+    
+</body>
+</html>

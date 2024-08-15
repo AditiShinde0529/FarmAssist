@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agricultural Schemes Eligibility Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            color: #333;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input[type="text"],
+        input[type="number"],
+        input[type="email"],
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #eligibleSchemes {
+            background-color: #e9f7ef;
+            padding: 15px;
+            border-radius: 4px;
+        }
+        #eligibleSchemes ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        #eligibleSchemes li {
+            background-color: #fff;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Agricultural Schemes Eligibility Checker</h1>
+        
+        <form id="userProfileForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="location">Location:</label>
+            <input type="text" id="location" name="location" required>
+
+            <label for="location">Gender:</label>
+            <input type="text" id="location" name="location" required>
+            
+            <label for="landHoldingSize">Land Holding Size (in acres):</label>
+            <input type="number" id="landHoldingSize" name="landHoldingSize" required>
+            
+            <label for="cropTypes">Crop Types:</label>
+            <input type="text" id="cropTypes" name="cropTypes" required>
+            
+            <label for="income">Annual Income:</label>
+            <input type="number" id="income" name="income" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <button type="submit">Check Eligibility</button>
+        </form>
+        
+        <div id="eligibleSchemes">
+            <h2>Eligible Schemes:</h2>
+            <ul id="schemesList">
+                <!-- Eligible schemes will be populated here -->
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('userProfileForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Here you would typically send the form data to your backend
+            // and receive the list of eligible schemes
+            // For demonstration, we'll just add some dummy schemes
+            const schemesList = document.getElementById('schemesList');
+            schemesList.innerHTML = `
+                <li> <a href="https://pmkisan.gov.in/">PM-KISAN Scheme</a> </li>
+                <li><a href="https://pmfby.gov.in/">Pradhan Mantri Fasal Bima Yojana</a></li>
+                <li><a href="https://www.myscheme.gov.in/schemes/rkvy">Rashtriya Krishi Vikas Yojana</a>Soil Health Card Scheme</li>
+            `;
+        });
+    </script>
+</body>
+</html>

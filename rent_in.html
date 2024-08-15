@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rental Service</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            background-color: #f0f0f0;
+        }
+
+        .back-button {
+            font-size: 24px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 20px;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            background-color: #fff;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .search-bar input[type="text"] {
+            flex-grow: 1;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+
+        .search-button,
+        .filter-button {
+            background-color: #008000;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            padding: 10px;
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+            padding: 10px;
+            cursor: pointer;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .product-card:hover {
+            transform: scale(1.03);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .discount-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: green;
+            color: white;
+            padding: 5px;
+            font-size: 14px;
+            border-radius: 4px;
+        }
+
+        .product-card h3 {
+            font-size: 16px;
+            margin: 10px 0;
+        }
+
+        .product-card p {
+            font-size: 14px;
+            margin: 5px 0;
+            color: #555;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="back-button">
+            <span>&larr;</span>
+        </div>
+        <h1>Rental Service</h1>
+    </header>
+
+    <div class="search-bar">
+        <input type="text" placeholder="Search">
+        <button class="search-button">&#128269;</button>
+        <button class="filter-button">&#128722;</button>
+    </div>
+
+    <div class="container">
+        <a href="rental_item_detail.html" class="product-card">
+            <img src="mahindra_tractor.jpg" alt="Product 1">
+            <div class="discount-badge">17% OFF</div>
+            <h3>Mahindra Tractor</h3>
+            <p>Rs1000/day</p>
+            <p>2 km away</p>
+            <p>Village: Wawarhire | Tal: Bhor</p>
+        </a>
+        <a href="rental_item_detail.html" class="product-card">
+            <img src="cow_cattle.jpg" alt="Product 2">
+            <div class="discount-badge">10% OFF</div>
+            <h3>Cow Cattle</h3>
+            <p>Rs500/day</p>
+            <p>31 km away</p>
+            <p>Village: Dhangavdi | Tal: Bhor</p>
+        </a>
+        <a href="rental_item_detail.html" class="product-card">
+            <img src="photo4.jpg" alt="Product 3">
+            <div class="discount-badge">9% OFF</div>
+            <h3>Poclain TATA JCB 210</h3>
+            <p>Rs2,000/day</p>
+            <p>94 km away</p>
+            <p>Village: Rajapur | Tal: Khatav</p>
+        </a>
+        <a href="rental_item_detail.html" class="product-card">
+            <img src="jcb.jpg" alt="Product 4">
+            <div class="discount-badge">23% OFF</div>
+            <h3>Mahindra (JCB)</h3>
+            <p>Rs1,000/day</p>
+            <p>136 km away</p>
+            <p>Village: Karad | Tal: Kahaad</p>
+        </a>
+        <a href="rental_item_detail.html" class="product-card">
+            <img src="Harvestor.jpg" alt="Product 5">
+            <div class="discount-badge">5% OFF</div>
+            <h3>Harvester</h3>
+            <p>Rs1,500/day</p>
+            <p>50 km away</p>
+            <p>Village: Satara | Tal: Koregaon</p>
+        </a>
+        <a href="rental_item_detail.html" class="product-card">
+            <img src="worker.jpg" alt="Product 6">
+            <div class="discount-badge">12% OFF</div>
+            <h3>Worker</h3>
+            <p>Rs700/day</p>
+            <p>5 km away</p>
+            <p>Village: Shirwal | Tal: Khandala</p>
+        </a>
+    </div>
+</body>
+</html>

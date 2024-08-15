@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rental Service</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0f2e19;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow-y: auto;
+        }
+
+        .product-card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 600px;
+            width: 100%;
+            margin: 20px auto;
+            box-sizing: border-box;
+        }
+
+        .product-image {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .product-info {
+            margin-bottom: 20px;
+        }
+
+        .product-title {
+            font-size: 28px;
+            margin: 0;
+            color: #333;
+        }
+
+        .product-price {
+            font-size: 22px;
+            color: green;
+            margin: 10px 0;
+        }
+
+        .product-availability {
+            font-size: 18px;
+            color: #555;
+        }
+
+        .product-location {
+            margin-bottom: 20px;
+        }
+
+        .product-location p {
+            margin: 5px 0;
+            color: #555;
+            font-size: 16px;
+        }
+
+        .view-location {
+            background-color: #008000;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .product-description {
+            margin-bottom: 20px;
+        }
+
+        .product-description p {
+            margin: 5px 0;
+            color: #555;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .seller-info {
+            margin-top: 20px;
+        }
+
+        .seller-info h3 {
+            margin: 0;
+            color: #333;
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .seller-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .seller-name {
+            font-size: 18px;
+            color: #333;
+        }
+
+        .seller-contact a {
+            text-decoration: none;
+            color: #008000;
+            font-size: 18px;
+            margin-left: 10px;
+        }
+
+        iframe {
+            width: 100%;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="product-card">
+        <img src="photo4.jpg" alt="Cow Lifting Machine" class="product-image">
+
+        <div class="product-info">
+            <h2 class="product-title">Poclain TATA JCB 210</h2>
+            <p class="product-price">₹500 / Day</p>
+            <p class="product-availability">Availability: 1</p>
+        </div>
+
+        <div class="product-location">
+            <p>Location: Wawarhire | Tal: Man</p>
+            <p>Distance: 2 km away</p>
+            <button class="view-location">View Location</button>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d60549.478964753514!2d73.77574295414233!3d18.468141836779342!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc295e4e9d8130d%3A0x6bcf105cf3850257!2sTractor%20Breaker%20in%20Pune!5e0!3m2!1sen!2sin!4v1723723145637!5m2!1sen!2sin" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+
+        <div class="product-description">
+            <p>Details:</p>
+            <p>The Poclain TATA JCB 210 is a robust and versatile excavator designed for heavy-duty construction and agricultural tasks, offering exceptional digging and lifting capabilities.</p>
+        </div>
+
+        <div class="seller-info">
+            <h3>Seller Information</h3>
+            <div class="seller-details">
+                <div class="seller-name">Abhijeet Dhope</div>
+                <div class="seller-contact">
+                    <a href="tel:+1234567890">Call</a>
+                    <a href="https://wa.me/1234567890">WhatsApp</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

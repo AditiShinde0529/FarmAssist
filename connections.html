@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <title>Rental Booking - FarmAssist</title>
+    <header>
+        <nav>
+          <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="home.html">My Services</a></li>
+            <li><a href="home.html">About Us</a></li>
+            <li><a href="home.html">Products</a></li>
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Other</a></li>
+          </ul>
+        </nav>
+      </header>
+      
+    <style>
+        /* Reset some default styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+#datepicker {
+            display: none;
+        }
+/* Header and Navigation */
+header {
+  background-color: rgb(15, 56, 46);
+  padding: 15px 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+}
+
+nav ul li {
+  margin: 0 20px;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: #e6e6e6;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f8f0;
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 40px;
+    padding-top: 80px;
+}
+
+.rental-choices {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+}
+
+.choice-box {
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.choice-box:hover {
+    transform: translateY(-5px);
+}
+
+.choice-box img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 4px 4px 0 0;
+}
+
+.choice-box h3 {
+    padding: 10px;
+    text-align: center;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.rental-item {
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.rental-info h3 {
+    margin-bottom: 10px;
+}
+
+.rental-info p {
+    margin-bottom: 5px;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.action-buttons button {
+    background-color: #2ecc71;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.action-buttons button:hover {
+    background-color: #27ae60;
+}
+
+.book-button {
+    display: block;
+    margin: 20px auto 0;
+    background-color: #2ecc71;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.book-button:hover {
+    background-color: #27ae60;
+}
+#datepicker {
+     display: none;
+}
+.grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .box {
+            background: #fff;
+            border: 1px solid #ddd;
+            padding: 1rem;
+            text-align: center;
+            cursor: pointer;
+            aspect-ratio: 1/1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .box img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            flex-grow: 1;
+        }
+.machine-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+}
+
+.machine-box {
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 1rem;
+    text-align: left;
+    cursor: pointer;
+    aspect-ratio: 16 / 9;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.machine-box img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/2.2.3/css/datepicker.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Rental Booking</h1>
+        <div class="rental-choices">
+            <div class="choice-box" onclick="showRentalList('tractor')">
+                <img src="tractor1.jpg" alt="Tractor">
+                <h3>Tractor</h3>
+            </div>
+            <div class="choice-box" onclick="showRentalList('livestock')">
+                <img src="tractor2.jpg" alt="Livestock">
+                <h3>Livestock</h3>
+            </div>
+            <div class="choice-box" onclick="showRentalList('farmland')">
+                <img src="tractor3.jpg" alt="Farmland">
+                <h3>Farmland</h3>
+            </div>
+            <div class="choice-box" onclick="showRentalList('transportation')">
+                <img src="tractor4.jpg" alt="Transportation">
+                <h3>Transportation</h3>
+            </div>
+        </div>
+        <div id="rental-list-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <h2 id="modal-title"></h2>
+                <div id="rental-list"></div>
+            </div>
+        </div>
+        <div id="calendar-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <h2 id="calendar-title"></h2>
+                <div id="calendar"></div>
+                <button class="book-button">Book Now</button>
+                <button id="selectDateBtn">Select Date</button>
+                <input type="text" id="datepicker" readonly>
+            </div>
+        </div>
+        <div></div>
+        <div id="machines" class="page">
+            <h2 id="machineType">Available Machines</h2>
+            <div class="machine-grid" id="machineList">
+                <!-- Machine boxes will be dynamically added here -->
+            </div>
+        </div>
+
+        <div id="machineDetails" class="page">
+            <h2 id="machineName"></h2>
+            <div class="machine-details" id="machineInfo">
+                <!-- Detailed machine information will be dynamically added here -->
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function() {
+            $("#selectDateBtn").click(function() {
+                $("#datepicker").datepicker({
+                    showAnim: "slideDown",
+                    onClose: function() {
+                        $("#datepicker").hide();
+                    }
+                }).show();
+            });
+        });
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script src="rent_in_script.js"></script>
+</body>
+</html>

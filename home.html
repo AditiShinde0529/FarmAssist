@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agricultural Website - Home</title>
+  <style>
+    /* Reset some default styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #f5f5f5;
+    }
+
+    /* Header and Navigation */
+    header {
+      background-color:rgb(15, 56, 46);
+      padding: 15px 0;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style-type: none;
+    }
+
+    nav ul li {
+      margin: 0 20px;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: #e6e6e6;
+    }
+
+    /* Hero Section */
+    .hero {
+      background-image: url('photo1.jpg');
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 0;
+    }
+
+    .hero-content {
+      max-width: 600px;
+      padding: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-content h1 {
+      font-size: 48px;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-content p {
+      font-size: 20px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    /* My Services Section */
+    #my-services {
+      padding: 80px 20px;
+      background-color: #fff;
+    }
+
+    #my-services h2 {
+      text-align: center;
+      margin-bottom: 50px;
+      color: #4CAF50;
+      font-size: 36px;
+    }
+
+    .service-boxes {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-gap: 40px;
+    }
+
+    .service-box {
+      background-color: #255c47;
+      padding: 30px;
+      text-align: center;
+      color:white;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.5s ease;
+    }
+
+    .service-box:hover {
+      transform: translateY(-20px);
+    }
+
+    .service-box h3 {
+      margin-bottom: 15px;
+      color:white;
+      font-size: 24px;
+    }
+
+    .service-box img {
+      width: 100%;
+      max-height: 200px;
+      object-fit: cover;
+      border-radius: 4px;
+      margin-bottom: 15px;
+    }
+
+    .service-box p {
+      color: white;
+      font-size: 16px;
+    }
+
+    #about-us {
+  width: 100%;
+  font-size: 14px; /* Reduced font size */
+  background-color: rgb(255, 255, 255);
+}
+
+.box {
+  width: 30%; /* Each box takes up 30% of the width */
+  padding: 10px;
+  margin: 5px;
+  box-sizing: border-box;
+  border: 5px solid #3e7d82; /* Border around each box */
+  display: inline-block;
+  vertical-align: top; /* Align the boxes horizontally */
+}
+
+h2 {
+  text-align: center;
+  font-size: 20px; /* Reduced font size for the heading */
+}
+
+p {
+  margin: 0;
+}
+
+
+    /* Products Section */
+    #products {
+      padding: 80px 20px;
+      background-color: #fff;
+      text-align: center;
+    }
+
+    #products h2 {
+      margin-bottom: 30px;
+      color: #4CAF50;
+      font-size: 36px;
+    }
+
+    #products p {
+      max-width: 800px;
+      margin: 0 auto 40px;
+      color: #666;
+      font-size: 18px;
+    }
+    #about-us {
+    width: 80%;
+    margin: 0 auto;
+    text-align: left;
+    padding-top:5px;
+    padding-bottom: 20px;
+    padding-left:20px;
+}
+
+#about-us h2 {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 20px;
+    padding-top:20px;
+    padding-bottom:2px;
+}
+
+#about-us p {
+    font-size: 1.2em;
+    line-height: 1.5;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+}
+
+.info-box {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.open-page-button {
+            background-color: #4CAF50; /* Green background */
+            border: none;
+            color: white; /* White text */
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px;
+            cursor: pointer;
+            border-radius: 4px; /* Rounded corners */
+        }
+
+        .open-page-button:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
+    /* Footer */
+    footer {
+      background-color:  rgb(15, 56, 46);
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#my-services">My Services</a></li>
+        <li><a href="#about-us">About Us</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#">Dashboard</a></li>
+        <li><a href="#">Other</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Welcome to Farm-Assist</h1>
+        <p>Your one-stop solution for all your agricultural needs</p>
+      </div>
+    </section>
+
+    <section id="my-services">
+      <h2>Our Services</h2>
+      <div class="service-boxes">
+       
+        <div class="service-box" onclick="window.location.href='rental.html'">
+          <h3>RENTAL MARKET</a></h3>
+          <img src="mahindra_tractor.jpg" alt="Rental Image">
+          <p>Access to Latest Agricultural Equipment
+          <li>Offers rental options for tractors and harvesters.</li>
+          <li>Provides upfront investment.</li></p></div>
+        <div class="service-box" onclick="window.location.href='Conn1.html'">
+          <h3>COMMUNITY CONNECTIONS</h3>
+          <img src="seller2.jpg" alt="Connections Image">
+          <p>Connect with Farmers and Industry Experts </p></div>
+        <div class="service-box" onclick="window.location.href='legal.html'">
+          <h3>PERSONALISED CONSULTATION</h3>
+          <img src="legal-image.jpg" alt="Legal Image">
+          <P>Expert consultation services & Assistance with contracts,finances, dispute resolution.</P></div>
+        <div class="service-box" onclick="window.location.href='scheme.html'">
+          <h3>GOVERNMENT SUPPORT</h3>
+          <img src="government-support-image.jpg" alt="Government Support Image">
+          <P>Government Programs for Farmers
+            <LI>Enhances agricultural endeavors.</LI>
+            <LI>Provides latest subsidies.</LI></P>
+          </div>
+    </section>
+
+    <section id="about-us">
+      <h2>About Us</h2>
+      <p>Our platform is a comprehensive solution designed to support farmers in every aspect of their operations, enhancing efficiency and productivity.</p>
+      
+      <div class="box">
+        <p><b>Platform Overview</b><br>
+          Farming Equipment Rentals and Service Connections.Rent essential farming equipment to reduce ownership costs.Provide direct access to marketplace sellers, transportation, and raw material providers.Empower farmers with Government Scheme Eligibility Checker, AI-powered Farming Knowledge Chatbot, and Excess Produce Utilization Chatbot. </p>
+      </div>
+      
+      <div class="box">
+        <p><b>Key Benefits:</b><br>
+          Cost Efficiency: Renting equipment lowers financial strain.<br>
+          Resource Optimization: Direct access to suppliers and services ensures timely, cost-effective procurement.<br>
+          Knowledge Enhancement: Our chatbots provide valuable insights, improving farming practices and profitability.<br>
+          Government Support: Easy access to government schemes for better financial support.
+        </p>
+      </div>
+      
+      <div class="box">
+        <p><b>Triple Win Model:</b><br>
+          Providers/Dealers: Gain increased business opportunities.<br>
+          Our Company: Benefits from service fees and a growing agricultural network.<br>
+          Farmers: Experience reduced costs, better resource access, and increased productivity.
+        </p>
+      </div>  
+    </section>
+    
+  
+
+    <section id="products">
+      <h2>Our Products</h2>
+      <p>Explore our wide range of agricultural products and services.</p>
+      <p>Find businesses that use wet waste to make useful and recycled products.</p>
+      <button class="open-page-button" onclick="window.location.href='extra.html'">Explore More!</button>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2023 Farm-Assist. All rights reserved.</p>
+  </footer>
+</body>
+<script>
+  !function(w, d, s, ...args){
+    var div = d.createElement('div');
+    div.id = 'aichatbot';
+    d.body.appendChild(div);
+    w.chatbotConfig = args;
+    var f = d.getElementsByTagName(s)[0],
+    j = d.createElement(s);
+    j.defer = true;
+    j.type = 'module';
+    j.src = 'https://aichatbot.sendbird.com/index.js';
+    f.parentNode.insertBefore(j, f);
+  }(window, document, 'script', '5E2B9309-44E7-40FE-B33E-BBF02BA52AE0', 'onboarding_bot', {
+    apiHost: 'https://api-cf-ap-8.sendbird.com',
+  });
+  </script>
+</html>
